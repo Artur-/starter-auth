@@ -1,7 +1,11 @@
-import { login as _login, logout as _logout } from '@hilla/frontend';
-import { AuthenticateThunk, UnauthenticateThunk } from 'Frontend/useAuth.js';
+import { login as _login, logout as _logout } from "@hilla/frontend";
+import { AuthenticateThunk, UnauthenticateThunk } from "Frontend/useAuth.js";
 
-export async function login(username: string, password: string, authenticate: AuthenticateThunk) {
+export async function login(
+  username: string,
+  password: string,
+  authenticate: AuthenticateThunk
+) {
   const result = await _login(username, password);
 
   if (!result.error) {

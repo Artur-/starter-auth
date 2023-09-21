@@ -1,20 +1,22 @@
-import { AppLayout } from '@hilla/react-components/AppLayout.js';
-import { Avatar } from '@hilla/react-components/Avatar.js';
-import { Button } from '@hilla/react-components/Button.js';
-import { DrawerToggle } from '@hilla/react-components/DrawerToggle.js';
-import { logout } from 'Frontend/auth.js';
-import Placeholder from 'Frontend/components/placeholder/Placeholder';
-import { AuthContext } from 'Frontend/useAuth.js';
-import { useRouteMetadata } from 'Frontend/util/routing';
-import { Suspense, useContext } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { AppLayout } from "@hilla/react-components/AppLayout.js";
+import { Avatar } from "@hilla/react-components/Avatar.js";
+import { Button } from "@hilla/react-components/Button.js";
+import { DrawerToggle } from "@hilla/react-components/DrawerToggle.js";
+import { logout } from "Frontend/auth.js";
+import Placeholder from "Frontend/components/placeholder/Placeholder";
+import { AuthContext } from "Frontend/useAuth.js";
+import { useRouteMetadata } from "Frontend/util/routing";
+import { Suspense, useContext } from "react";
+import { NavLink, Outlet } from "react-router-dom";
 
 const navLinkClasses = ({ isActive }: any) => {
-  return `block rounded-m p-s ${isActive ? 'bg-primary-10 text-primary' : 'text-body'}`;
+  return `block rounded-m p-s ${
+    isActive ? "bg-primary-10 text-primary" : "text-body"
+  }`;
 };
 
 export default function MainLayout() {
-  const currentTitle = useRouteMetadata()?.title ?? 'My App';
+  const currentTitle = useRouteMetadata()?.title ?? "My App";
   const { state, unauthenticate } = useContext(AuthContext);
   return (
     <AppLayout primarySection="drawer">
@@ -38,10 +40,16 @@ export default function MainLayout() {
           {state.user ? (
             <>
               <div className="flex items-center gap-s">
-                <Avatar theme="xsmall" img={state.user.profilePictureUrl} name={state.user.name} />
+                <Avatar
+                  theme="xsmall"
+                  img={state.user.profilePictureUrl}
+                  name={state.user.name}
+                />
                 {state.user.name}
               </div>
-              <Button onClick={async () => logout(unauthenticate)}>Sign out</Button>
+              <Button onClick={async () => logout(unauthenticate)}>
+                Sign out
+              </Button>
             </>
           ) : (
             <a href="/login">Sign in</a>

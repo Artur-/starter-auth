@@ -1,15 +1,15 @@
-import type User from 'Frontend/generated/com/example/application/data/entity/User.js';
-import type Role from 'Frontend/generated/com/example/application/data/Role.js';
-import { UserEndpoint } from 'Frontend/generated/endpoints.js';
-import { createContext, Dispatch, useEffect, useReducer } from 'react';
+import type User from "Frontend/generated/com/example/application/data/entity/User.js";
+import type Role from "Frontend/generated/com/example/application/data/Role.js";
+import { UserEndpoint } from "Frontend/generated/endpoints.js";
+import { createContext, Dispatch, useEffect, useReducer } from "react";
 
 export type AuthenticateThunk = () => Promise<void>;
 export type UnauthenticateThunk = () => void;
 
-const LOGIN_FETCH = 'LOGIN_FETCH';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-const LOGIN_FAILURE = 'LOGIN_FAILURE';
-const LOGOUT = 'LOGOUT';
+const LOGIN_FETCH = "LOGIN_FETCH";
+const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+const LOGIN_FAILURE = "LOGIN_FAILURE";
+const LOGOUT = "LOGOUT";
 
 export type AuthUser = User &
   Readonly<{
@@ -51,7 +51,10 @@ function createAuthenticateThunk(dispatch: Dispatch<LoginActions>) {
     const userInfo = await UserEndpoint.getAuthenticatedUser();
     if (userInfo) {
       const profilePictureUrl = `data:image;base64,${btoa(
-        userInfo.profilePicture.reduce((str, n) => str + String.fromCharCode((n + 256) % 256), '')
+        userInfo.profilePicture.reduce(
+          (str, n) => str + String.fromCharCode((n + 256) % 256),
+          ""
+        )
       )}`;
       const user = {
         ...userInfo,
@@ -64,7 +67,7 @@ function createAuthenticateThunk(dispatch: Dispatch<LoginActions>) {
       });
     } else {
       dispatch({
-        error: 'Not authenticated',
+        error: "Not authenticated",
         type: LOGIN_FAILURE,
       });
     }
@@ -148,7 +151,9 @@ export function useAuth(): Authentication {
       }
 
       if (access.rolesAllowed) {
-        return access.rolesAllowed.some((allowedRole) => state.user!.roles.includes(allowedRole));
+        return access.rolesAllowed.some((allowedRole) =>
+          state.user!.roles.includes(allowedRole)
+        );
       }
 
       return true;
