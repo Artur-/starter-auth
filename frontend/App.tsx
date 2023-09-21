@@ -1,5 +1,5 @@
+import { AuthContext, useAuth } from "@hilla/react-auth";
 import router from "Frontend/routes.js";
-import { AuthContext, useAuth } from "Frontend/useAuth.js";
 import { RouterProvider } from "react-router-dom";
 
 export default function App() {

@@ -1,4 +1,4 @@
-import { AccessProps, AuthContext } from "Frontend/useAuth.js";
+import { AccessProps, AuthContext } from "@hilla/react-auth";
 import { ReactNode, useContext } from "react";
 import { Navigate, useMatches } from "react-router-dom";
 

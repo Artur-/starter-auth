@@ -1,9 +1,9 @@
+import { login } from "@hilla/frontend";
+import { AuthContext } from "@hilla/react-auth";
 import {
   LoginI18n,
   LoginOverlay,
 } from "@hilla/react-components/LoginOverlay.js";
-import { login } from "Frontend/auth.js";
-import { AuthContext } from "Frontend/useAuth.js";
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const loginI18nDefault: LoginI18n = {
 };
 
 export default function LoginView() {
-  const { state, authenticate } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   const [hasError, setError] = useState<boolean>();
   const [url, setUrl] = useState<string>();
 

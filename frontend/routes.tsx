@@ -1,10 +1,9 @@
-import Placeholder from "Frontend/components/placeholder/Placeholder.js";
-import AuthControl from "Frontend/views/AuthControl.js";
 import HelloWorldView from "Frontend/views/helloworld/HelloWorldView.js";
 import LoginView from "Frontend/views/login/LoginView.js";
 import MainLayout from "Frontend/views/MainLayout.js";
 import { lazy } from "react";
 import { createBrowserRouter, RouteObject } from "react-router-dom";
+import AuthControl from "./views/AuthControl";
 
 const AboutView = lazy(async () => import("Frontend/views/about/AboutView.js"));
 
